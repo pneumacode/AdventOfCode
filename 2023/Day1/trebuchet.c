@@ -45,11 +45,11 @@ int main()
             continue;
         }
 
-		// Keep track of digits
+	// Keep track of digits
         if (isdigit(ch) != 0)
         {
-			// Assign first digit to both array elements
-			// in case there is only one digit in the line
+	    // Assign first digit to both array elements
+	    // in case there is only one digit in the line
             if (digits[0] == 0)
             {
                 digits[0] = ch;
