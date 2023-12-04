@@ -63,16 +63,16 @@ std::vector<std::string_view> split_at_any(const std::string_view input,
 
 int main()
 {
-	const int MAX_RED   = 12;
-	const int MAX_GREEN = 13;
-	const int MAX_BLUE  = 14;
+    const int MAX_RED   = 12;
+    const int MAX_GREEN = 13;
+    const int MAX_BLUE  = 14;
 
     using namespace std;
 
     ifstream fin;
     string line;
-	int id_sums = 0;
-	int game_counter = 0;
+    int id_sums = 0;
+    int game_counter = 0;
     bool rPossible = true, gPossible = true, bPossible = true;
 
     fin.open("input");
@@ -81,50 +81,50 @@ int main()
     {
         for (const auto ss : split_at_any(line, ",;:"))
         {
-			bool isGame  = ss.find("Game")  != string::npos;
-			bool isRed   = ss.find("red")   != string::npos;
-			bool isGreen = ss.find("green") != string::npos;
-			bool isBlue  = ss.find("blue")  != string::npos;
+            bool isGame  = ss.find("Game")  != string::npos;
+            bool isRed   = ss.find("red")   != string::npos;
+            bool isGreen = ss.find("green") != string::npos;
+            bool isBlue  = ss.find("blue")  != string::npos;
 
-			if (isGame)
-			{
+            if (isGame)
+            {
                 if (game_counter > 0 && rPossible && gPossible && bPossible)
                     id_sums += game_counter;
 
                 // Assume the next game is possible for now.
                 rPossible = true, gPossible = true, bPossible = true;
-				game_counter++;
-			}
+                game_counter++;
+            }
 
-			if (isRed)
-			{
-				vector<string> red = splitString((string)ss, ' ');
+            if (isRed)
+            {
+                vector<string> red = splitString((string)ss, ' ');
                 // Is this game possible?
                 if (stoi(red[0]) > MAX_RED)
                 {
                     rPossible = false;
                 }
-			}
+            }
 
-			if (isGreen)
-			{
+            if (isGreen)
+            {
                 vector<string> green = splitString((string)ss, ' ');
                 // Is this game possible?
                 if (stoi(green[0]) > MAX_GREEN)
                 {
                     gPossible = false;
                 }
-			}
+            }
 
-			if (isBlue)
-			{
+            if (isBlue)
+            {
                 vector<string> blue = splitString((string)ss, ' ');
                 // Is this game possible?
                 if (stoi(blue[0]) > MAX_BLUE)
                 {
                     bPossible = false;
                 }
-			}
+            }
         }
     }
 
