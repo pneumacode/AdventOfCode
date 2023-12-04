@@ -67,9 +67,9 @@ int main()
     const int MAX_GREEN = 13;
     const int MAX_BLUE  = 14;
 
-	int min_red = 0, min_green = 0, min_blue = 0;
-	auto power_sum = 0;
-	
+    int min_red = 0, min_green = 0, min_blue = 0;
+    auto power_sum = 0;
+    
     using namespace std;
 
     ifstream fin;
@@ -97,19 +97,19 @@ int main()
                 // Assume the next game is possible for now.
                 rPossible = true, gPossible = true, bPossible = true;
 
-				// Update power sum total
-				power_sum += (min_red * min_green * min_blue);
-				
-				// Reset min values for each color cube
-				min_red = min_green = min_blue = 0;
-				
+                // Update power sum total
+                power_sum += (min_red * min_green * min_blue);
+                
+                // Reset min values for each color cube
+                min_red = min_green = min_blue = 0;
+                
                 game_counter++;
             }
 
             if (isRed)
             {
                 vector<string> red = splitString((string)ss, ' ');
-				int reds = stoi(red[0]);
+                int reds = stoi(red[0]);
 
                 // Is this game possible?
                 if (reds > MAX_RED)
@@ -117,7 +117,7 @@ int main()
                     rPossible = false;
                 }
 
-				// Keep track of minimum number of each color per game
+                // Keep track of minimum number of each color per game
                 if (reds > min_red)
                 {
                     min_red = reds;
@@ -127,7 +127,7 @@ int main()
             if (isGreen)
             {
                 vector<string> green = splitString((string)ss, ' ');
-				int greens = stoi(green[0]);
+                int greens = stoi(green[0]);
 
                 // Is this game possible?
                 if (greens > MAX_GREEN)
@@ -135,7 +135,7 @@ int main()
                     gPossible = false;
                 }
 
-				// Keep track of minimum number of each color per game
+                // Keep track of minimum number of each color per game
                 if (greens > min_green)
                 {
                     min_green = greens;
@@ -145,7 +145,7 @@ int main()
             if (isBlue)
             {
                 vector<string> blue = splitString((string)ss, ' ');
-				int blues = stoi(blue[0]);
+                int blues = stoi(blue[0]);
 
                 // Is this game possible?
                 if (blues > MAX_BLUE)
@@ -153,7 +153,7 @@ int main()
                     bPossible = false;
                 }
 
-				// Keep track of minimum number of each color per game
+                // Keep track of minimum number of each color per game
                 if (blues > min_blue)
                 {
                     min_blue = blues;
@@ -164,12 +164,12 @@ int main()
 
     // Check the final game result.
     if (rPossible && gPossible && bPossible)
-	{
+    {
         id_sums += game_counter;
-	}
-	
-	// Update the final power sum total
-	power_sum += (min_red * min_green * min_blue);
+    }
+    
+    // Update the final power sum total
+    power_sum += (min_red * min_green * min_blue);
 
     fin.close();
     printf("The sum of all possible Game IDs is %d.\n", id_sums);
