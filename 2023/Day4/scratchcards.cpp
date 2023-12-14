@@ -30,48 +30,48 @@ int main()
 
     while (getline(fin, line))
     {
-		vector<string> winning_nums;
-		vector<string> my_nums;
-		int card_points;
-		
+        vector<string> winning_nums;
+        vector<string> my_nums;
+        int card_points;
+        
         for (const auto ss : split_at_any(line, ":|"))
-		{
+        {
             bool is_card_num = ss.find("Card") != string::npos;
-			bool is_winning_nums = ss.length() < 32;
-			
-			// Skip the card number field
-			if (is_card_num)
-			{
-				card_points = 0;
-				continue;
-			}
-			
-			// The winning numbers field is shorter
-			if (is_winning_nums)
-				winning_nums = split_string((string)ss, ' ');
-			else
-			{
-				vector<string>::iterator i;
-				my_nums = split_string((string)ss, ' ');
+            bool is_winning_nums = ss.length() < 32;
+            
+            // Skip the card number field
+            if (is_card_num)
+            {
+                card_points = 0;
+                continue;
+            }
+            
+            // The winning numbers field is shorter
+            if (is_winning_nums)
+                winning_nums = split_string((string)ss, ' ');
+            else
+            {
+                vector<string>::iterator i;
+                my_nums = split_string((string)ss, ' ');
 
-				// Calculate points for this card
-				for (i = my_nums.begin(); i != my_nums.end(); ++i)
-				{
-					if (find(winning_nums.begin(),
-							 winning_nums.end(), *i) != winning_nums.end())
-					{
-						if (card_points == 0)
-							card_points = 1;
-						else
-							card_points *= 2;
+                // Calculate points for this card
+                for (i = my_nums.begin(); i != my_nums.end(); ++i)
+                {
+                    if (find(winning_nums.begin(),
+                             winning_nums.end(), *i) != winning_nums.end())
+                    {
+                        if (card_points == 0)
+                            card_points = 1;
+                        else
+                            card_points *= 2;
 
-						// cout << "Card points: " << card_points << endl;
-					}
-				}
+                        // cout << "Card points: " << card_points << endl;
+                    }
+                }
 
-				// Update total points
-				total_points += card_points;
-			}
+                // Update total points
+                total_points += card_points;
+            }
         }
     }
 
