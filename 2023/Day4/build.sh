@@ -1,4 +1,4 @@
 #!/bin/sh
 
-PROJECT="scratchcards"
-c++ -Wall -Wextra -ggdb -pedantic -std=gnu++17 -o $PROJECT $PROJECT.cpp && ./$PROJECT
+NAME="scratchcards"
+c++ -Wall -Wextra -ggdb -pedantic -std=gnu++17 -o $NAME $NAME.cpp && ./$NAME
