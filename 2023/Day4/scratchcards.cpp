@@ -33,7 +33,7 @@ main()
     vector<vector<string>> all_winning_cards;
     vector<vector<string>> all_my_cards;
     int total_points = 0;
-    int initial_cards = 219;
+    int initial_cards = 0;
 
     fin.open("input");
 
@@ -118,6 +118,7 @@ main()
 
     // Iterate through our list of matches,
     // adding additional cards as necessary.
+    initial_cards = card_list.size();
     vector<int> card_count(initial_cards, 1);
 
     for (int i = 0; i < (int)card_count.size(); ++i)
